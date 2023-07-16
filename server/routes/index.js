@@ -1,9 +1,11 @@
 var express = require('express');
+const { MainController } = require('../controllers/MainController')
 var router = express.Router();
 var passport = require('../lib/passport')
 
 const { PassportMainController } = require('../controllers/PassportMainController')
 const { PassportAuthorizationCheck } = require('../lib/PassportAuthorizationCheck')
+
 
 /* GET home page. */ // INI MUNGKIN BISA DI UBAH MENJADI LANDING PAGE ATAU APA GITU
 router.get('/', PassportMainController.MainPage);
@@ -27,3 +29,7 @@ router.get('/dashboard', PassportAuthorizationCheck, PassportMainController.getD
 router.post('/logout', PassportAuthorizationCheck, PassportMainController.logout)
 
 module.exports = router;
+
+router.get('/gamelist/get', MainController.getGameList)
+
+
