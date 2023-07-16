@@ -1,41 +1,33 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config');
 
-class gameList {
-    #model = sequelize.define('gameList', {
-        id: {
+class GameList {
+    #model = sequelize.define('gamelist', {
+        gameid: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        umur: { 
+        gameName: { 
             allowNull: false,
-            type: DataTypes.INTEGER
-        },
-        city: {
+            unique: true,
             type: DataTypes.STRING
         },
-        country: {
+        gameDescription: {
             type: DataTypes.STRING
         },
-        userId: {
-            allowNull: false,
-            type: DataTypes.INTEGER
-        },
-        createdAt: {
-            allowNull: false,
-            defaultValue: DataTypes.literal('NOW()'),
-            type: DataTypes.DATE
-        },
-        updatedAt: {
-            allowNull: false,
-            defaultValue: DataTypes.literal('NOW()'),
-            type: DataTypes.DATE
+        gameImageurl: {
+            type: DataTypes.STRING
         }
-            
+    }, {
+        tableName: 'gamelist',
+        updatedAt: false,
+        createdAt: false
     })
+
+    
 };
 
-const biodataUser = new BiodataUser()
-module.exports = { biodataUser }
+const gameList = new GameList()
+module.exports = { gameList }
