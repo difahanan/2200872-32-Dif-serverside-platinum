@@ -19,6 +19,10 @@ class GameList {
             },
             gameImageUrl: {
                 type: DataTypes.STRING
+            },
+            gameUrl: {
+                unique: true,
+                type: DataTypes.STRING
             }
         }, {
             tableName: 'gamelist',
