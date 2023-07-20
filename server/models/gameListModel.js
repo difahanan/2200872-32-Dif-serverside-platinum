@@ -11,15 +11,22 @@ class GameList {
                 primaryKey: true,
                 type: DataTypes.INTEGER
             },
-            gameName: { 
+            game_name: { 
                 allowNull: false,
                 unique: true,
                 type: DataTypes.STRING
             },
-            gameDescription: {
+            game_description: {
                 type: DataTypes.STRING
             },
-            gameImageUrl: {
+            game_image_url: {
+                type: DataTypes.STRING
+            },
+            game_url: {
+                unique: true,
+                type: DataTypes.STRING
+            },
+            game_type: {
                 type: DataTypes.STRING
 
             },            

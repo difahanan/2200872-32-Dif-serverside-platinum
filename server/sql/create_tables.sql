@@ -30,11 +30,14 @@ CREATE TABLE public.history (
 );
 
 
-CREATE TABLE public.gamelist(
-	game_id serial NOT NULL,
+CREATE TABLE public.gamelist (
+	gameid serial4 NOT NULL,
 	game_name varchar NOT NULL,
 	game_description varchar NULL,
-	game_type varchar,
 	game_image_url varchar NULL,
-	CONSTRAINT gamelist_pk PRIMARY KEY (game_id),
-	CONSTRAINT gamelist_un UNIQUE (game_name)
+	game_url varchar NULL,
+	game_type varchar NULL,
+	CONSTRAINT gamelist_pk PRIMARY KEY (gameid),
+	CONSTRAINT gamelist_un UNIQUE (game_name),
+	CONSTRAINT gamelist_unurl UNIQUE (game_url)
+);
