@@ -25,16 +25,19 @@ class BiodataUser {
         },
         createdAt: {
             allowNull: false,
-            defaultValue: DataTypes.literal('NOW()'),
             type: DataTypes.DATE
-        },
-        updatedAt: {
-            allowNull: false,
-            defaultValue: DataTypes.literal('NOW()'),
-            type: DataTypes.DATE
-        }
+        },   
             
+    }, {
+        modelName: 'biodataUser',
+        tableName: 'biodata_user',
+        underscored: true,
+        updatedAt:true
     })
+
+    async getModel(){
+        return this.#model
+    }
 };
 
 const biodataUser = new BiodataUser()

@@ -18,11 +18,18 @@ class History {
         },
         createdAt: {
             allowNull: false,
-            defaultValue: DataTypes.literal('NOW()'),
             type: DataTypes.DATE
         }
+    }, {
+        tableName: 'history',
+        underscored: true,
+        updatedAt:false
     })
+
+    async getModel(){
+        return this.#model
+    }
 };
 
-const user = new User()
-module.exports = { user }
+const historyUser = new History()
+module.exports = { historyUser }
