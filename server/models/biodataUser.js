@@ -1,5 +1,6 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config');
+ const { DataTypes } = require('sequelize');
+ const { sequelize } = require('../config');
+
 
 class BiodataUser {
     #model = sequelize.define('biodataUser', {

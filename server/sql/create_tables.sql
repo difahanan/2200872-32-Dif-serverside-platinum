@@ -29,6 +29,7 @@ CREATE TABLE public.history (
 	CONSTRAINT history_fk FOREIGN KEY (user_id) REFERENCES public."user"(id) ON UPDATE CASCADE
 );
 
+
 CREATE TABLE public.gamelist(
 	game_id serial NOT NULL,
 	game_name varchar NOT NULL,
@@ -37,4 +38,3 @@ CREATE TABLE public.gamelist(
 	game_image_url varchar NULL,
 	CONSTRAINT gamelist_pk PRIMARY KEY (game_id),
 	CONSTRAINT gamelist_un UNIQUE (game_name)
-);

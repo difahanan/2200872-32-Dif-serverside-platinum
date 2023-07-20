@@ -29,7 +29,11 @@ class UserModel {
     })
 
     async insertData(email, username, password){
-        const insertData = await this.#model.create({ email, username, password})
+
+   
+
+        const insertData = await this.#model.create({ email, username, password })
+
         return insertData
     }
 
@@ -62,10 +66,11 @@ class UserModel {
         });
         return data;
       }      
-
+  
     async getModel() {
         return this.#model
     }
+
 }
 
 // EXPORTS MODEL NYA

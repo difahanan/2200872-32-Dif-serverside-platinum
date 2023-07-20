@@ -3,6 +3,7 @@ const { MainController } = require('../controllers/MainController')
 var router = express.Router();
 var passport = require('../lib/passport')
 
+
 const { PassportMainController } = require('../controllers/PassportMainController')
 const { PassportAuthorizationCheck } = require('../lib/PassportAuthorizationCheck');
 const { LandingPageController } = require('../controllers/LandingPageController');
@@ -45,3 +46,7 @@ router.get('/player/community', LandingPageController.playerCommunity);
 
 
 module.exports = router;
+
+router.get('/gamelist/get', MainController.getGameList)
+
+

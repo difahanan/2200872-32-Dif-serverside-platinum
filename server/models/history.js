@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config');
 
+
 class History {
     #model = sequelize.define('history', {
         id: {

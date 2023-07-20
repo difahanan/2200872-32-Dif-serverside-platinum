@@ -3,7 +3,9 @@ const { sequelize } = require('../config');
 
 class GameList {
     #model = sequelize.define('gamelist', {
-            gameId: {
+
+            gameid: {
+
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
@@ -19,15 +21,20 @@ class GameList {
             },
             gameImageUrl: {
                 type: DataTypes.STRING
+
             },            
             gameType: {
                 type: DataTypes.STRING
+
+
             }
         }, {
             tableName: 'gamelist',
             updatedAt: false,
+
             createdAt: false,
             underscored: true
+
         });
 
     //=== QUERY
@@ -35,6 +42,7 @@ class GameList {
         const data = await this.#model.findAll({ raw: true });
         return data;
     }
+
 
     async getTrendingGameList() {
         const data = await this.#model.findAll({ 
