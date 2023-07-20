@@ -13,9 +13,9 @@ CREATE TABLE public.biodata_user (
 	umur integer NULL,
 	city varchar NULL,
 	country varchar NULL,
+	user_id integer NOT NULL,
 	created_at timestamptz NOT NULL DEFAULT NOW(),
 	updated_at timestamptz NOT NULL DEFAULT NOW(),
-	user_id integer NOT NULL,
 	CONSTRAINT biodata_user_pk PRIMARY KEY (id),
 	CONSTRAINT biodata_user_fk FOREIGN KEY (user_id) REFERENCES public."user"(id) ON UPDATE CASCADE
 );
@@ -29,11 +29,12 @@ CREATE TABLE public.history (
 	CONSTRAINT history_fk FOREIGN KEY (user_id) REFERENCES public."user"(id) ON UPDATE CASCADE
 );
 
-CREATE TABLE public.gamelist (
-	gameid serial NOT NULL,
-	gameName varchar NOT NULL,
-	gameDescription varchar NULL,
-	gameImageUrl varchar NULL,
-	CONSTRAINT gamelist_pk PRIMARY KEY (gameid),
-	CONSTRAINT gamelist_un UNIQUE (gameName)
-);
+
+CREATE TABLE public.gamelist(
+	game_id serial NOT NULL,
+	game_name varchar NOT NULL,
+	game_description varchar NULL,
+	game_type varchar,
+	game_image_url varchar NULL,
+	CONSTRAINT gamelist_pk PRIMARY KEY (game_id),
+	CONSTRAINT gamelist_un UNIQUE (game_name)

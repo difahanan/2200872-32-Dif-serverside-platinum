@@ -3,12 +3,11 @@ const { MainController } = require('../controllers/MainController')
 var router = express.Router();
 var passport = require('../lib/passport')
 
+
 const { PassportMainController } = require('../controllers/PassportMainController')
-const { PassportAuthorizationCheck } = require('../lib/PassportAuthorizationCheck')
+const { PassportAuthorizationCheck } = require('../lib/PassportAuthorizationCheck');
+const { LandingPageController } = require('../controllers/LandingPageController');
 
-
-/* GET home page. */ // INI MUNGKIN BISA DI UBAH MENJADI LANDING PAGE ATAU APA GITU
-router.get('/', PassportMainController.MainPage);
 
 /* REGISTER PAGE */
 router.get('/register', PassportMainController.getRegisterPage)
@@ -16,17 +15,35 @@ router.post('/register', PassportMainController.postRegisterPage)
 
 /* LOGIN PAGE */
 router.get('/login', PassportMainController.getLoginPage);
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true
-}))
+// router.post('/login', passport.authenticate('local', {
+//     successRedirect: '/dashboard',
+//     failureRedirect: '/login',
+//     failureFlash: true
+// }))
 
-/* DASHBOARD PAGE */ // KALAU TIDAK PERLU HAPUS AJA ATAU GANTI NAMANYA
-router.get('/dashboard', PassportAuthorizationCheck, PassportMainController.getDashboardPage)
+router.post('/login', passport.authenticate('local', 
+    {
+        failureRedirect: '/login',
+        failureFlash: true
+    })
+    , function(req, res) {
+        console.log(req.user)
+        res.status(200).json({message: "success"})
+    }
+)
 
-/* LOGOUT */ // KALAU TIDAK PERLU HAPUS AJA ATAU GANTI NAMANYA
-router.post('/logout', PassportAuthorizationCheck, PassportMainController.logout)
+
+
+router.get('/gamelist/get', MainController.getGameList)
+
+
+/* data utk komponen landingpage */
+router.get('/gamelist/trending', LandingPageController.trendingGames);
+router.get('/gamelist/popular', LandingPageController.popularGames);
+router.get('/gamelist/comingsoon', LandingPageController.comingSoonGames);
+router.get('/player/leaderboard', LandingPageController.playerLeaderboard);
+router.get('/player/community', LandingPageController.playerCommunity);
+
 
 module.exports = router;
 
